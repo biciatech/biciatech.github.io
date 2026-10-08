@@ -436,12 +436,6 @@
       letter-spacing: 1px;
     }
 
-    .trust-items span:nth-child(3) {
-      font-family: Georgia, serif;
-      font-size: 15px;
-      font-style: italic;
-    }
-
     .trust-items span:nth-child(4) {
       font-size: 12px;
       letter-spacing: 1.5px;
@@ -517,6 +511,16 @@
       background: var(--purple-soft);
       color: var(--purple-deep);
       font-size: 19px;
+    }
+
+    .service-icon svg {
+      width: 21px;
+      height: 21px;
+      fill: none;
+      stroke: currentColor;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 1.7;
     }
 
     .service-card h3 {
@@ -605,12 +609,25 @@
       border-bottom: 0;
     }
 
-    .step-number {
-      padding-top: 3px;
-      color: #bdb3f2;
-      font-size: 11px;
-      font-weight: 650;
-      letter-spacing: 1px;
+    .step-icon {
+      display: grid;
+      width: 30px;
+      height: 30px;
+      place-items: center;
+      border: 1px solid rgba(189, 179, 242, 0.2);
+      border-radius: 9px;
+      background: rgba(189, 179, 242, 0.08);
+      color: #c6bcff;
+    }
+
+    .step-icon svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: currentColor;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 1.6;
     }
 
     .step h3 {
@@ -1042,7 +1059,9 @@
         </article>
         <article class="service-card">
           <div class="service-number" data-i18n="services.productNumber">03 / EVOLVE</div>
-          <div class="service-icon" aria-hidden="true">↗</div>
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M7.5 18.5H17a4 4 0 0 0 .5-8A6 6 0 0 0 6 9.5a4.5 4.5 0 0 0 1.5 9Z"></path><path d="M12 16V11m-2.5 2.5L12 11l2.5 2.5"></path></svg>
+          </div>
           <h3 data-i18n="services.productTitle">Product &amp; cloud</h3>
           <p data-i18n="services.productCopy">From first prototype to scalable infrastructure, we help your product keep pace with your ambition.</p>
         </article>
@@ -1059,28 +1078,36 @@
         </div>
         <div class="steps">
           <article class="step">
-            <div class="step-number">01</div>
+            <div class="step-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><circle cx="12" cy="12" r="3"></circle><path d="M12 2v2M22 12h-2"></path></svg>
+            </div>
             <div>
               <h3 data-i18n="approach.stepOneTitle">Start with the why</h3>
               <p data-i18n="approach.stepOneCopy">We learn about your goals, your people, and the real problem worth solving.</p>
             </div>
           </article>
           <article class="step">
-            <div class="step-number">02</div>
+            <div class="step-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"></path><path d="m3.5 6 .8.8L6 5M3.5 12l.8.8L6 11M3.5 18l.8.8L6 17"></path></svg>
+            </div>
             <div>
               <h3 data-i18n="approach.stepTwoTitle">Make a clear plan</h3>
               <p data-i18n="approach.stepTwoCopy">Together, we shape a practical roadmap, the right team, and a path to measurable value.</p>
             </div>
           </article>
           <article class="step">
-            <div class="step-number">03</div>
+            <div class="step-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"></path></svg>
+            </div>
             <div>
               <h3 data-i18n="approach.stepThreeTitle">Build, learn, improve</h3>
               <p data-i18n="approach.stepThreeCopy">We ship in focused steps, stay transparent, and keep refining around your feedback.</p>
             </div>
           </article>
           <article class="step">
-            <div class="step-number">04</div>
+            <div class="step-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 17 9 11l4 4 8-9"></path><path d="M15 6h6v6"></path></svg>
+            </div>
             <div>
               <h3 data-i18n="approach.stepFourTitle">Grow with confidence</h3>
               <p data-i18n="approach.stepFourCopy">Launch is a beginning. We help your software evolve as your business does.</p>
@@ -1120,7 +1147,7 @@
     </div>
     <div class="shell footer-bottom">
       <p>© <span id="current-year">2026</span> <span data-i18n="footer.rights">Biciatech. All rights reserved.</span></p>
-      <p data-i18n="footer.location">[Your location]</p>
+      <p data-i18n="footer.location">Americana, SP - Brazil</p>
     </div>
   </footer>
 
@@ -1194,7 +1221,7 @@
         "footer.github": "GitHub",
         "footer.email": "Email",
         "footer.rights": "Biciatech. All rights reserved.",
-        "footer.location": "[Your location]",
+        "footer.location": "Americana, SP - Brazil",
         "meta.title": "Biciatech — Software built for what’s next",
         "meta.description": "Biciatech builds custom software, AI-powered products, and digital experiences for ambitious teams."
       },
@@ -1262,7 +1289,7 @@
         "footer.github": "GitHub",
         "footer.email": "E-mail",
         "footer.rights": "Biciatech. Todos os direitos reservados.",
-        "footer.location": "[Sua localização]",
+        "footer.location": "Americana, SP - Brasil",
         "meta.title": "Biciatech — Software para o que vem aí",
         "meta.description": "A Biciatech cria software sob medida, produtos com inteligência artificial e experiências digitais para empresas ambiciosas."
       }
