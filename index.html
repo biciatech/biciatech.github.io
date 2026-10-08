@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#faf9fc">
+  <meta name="description" content="Biciatech builds custom software, AI-powered products, and digital experiences for ambitious teams.">
+  <title>Biciatech — Software built for what’s next</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #faf9fc;
+      --ink: #28233f;
+      --muted: #716d7e;
+      --line: #e7e4ed;
+      --purple: #6d63b5;
+      --purple-deep: #453b70;
+      --purple-soft: #efedf8;
+      --purple-light: #d8d3f1;
+      --display: "Arial", "Helvetica Neue", sans-serif;
+      --body: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --max-width: 1200px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 96px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--body);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button:focus-visible,
+    a:focus-visible {
+      outline: 3px solid var(--purple);
+      outline-offset: 4px;
+    }
+
+    .shell {
+      width: min(var(--max-width), calc(100% - 64px));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: relative;
+      z-index: 5;
+      border-bottom: 1px solid rgba(40, 35, 63, 0.08);
+    }
+
+    .nav {
+      display: flex;
+      min-height: 82px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      flex: 0 0 auto;
+    }
+
+    .brand-logo {
+      display: block;
+      width: 54px;
+      height: 58px;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      color: #5b5768;
+      font-size: 13px;
+      font-weight: 550;
+    }
+
+    .nav-links a:not(.nav-cta):hover,
+    .footer-links a:hover {
+      color: var(--ink);
+    }
+
+    .nav-cta,
+    .button {
+      display: inline-flex;
+      min-height: 46px;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 0 19px;
+      border: 1px solid var(--ink);
+      border-radius: 6px;
+      background: var(--ink);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+    }
+
+    .language-toggle {
+      min-height: 36px;
+      padding: 0 11px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: transparent;
+      color: #5b5768;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+    }
+
+    .language-toggle:hover {
+      border-color: #c7c1e0;
+      color: var(--ink);
+    }
+
+    .nav-cta:hover,
+    .button:hover {
+      transform: translateY(-2px);
+      background: #393153;
+    }
+
+    .button-light {
+      border-color: rgba(255, 255, 255, 0.28);
+      background: transparent;
+      color: #fff;
+    }
+
+    .button-light:hover {
+      background: #fff;
+      color: var(--ink);
+    }
+
+    .button-arrow {
+      font-size: 17px;
+      line-height: 0;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      height: 1px;
+      margin: 5px 0;
+      background: currentColor;
+    }
+
+    .hero {
+      display: grid;
+      min-height: 650px;
+      grid-template-columns: 1.03fr 0.97fr;
+      align-items: center;
+      gap: 44px;
+      padding-block: 76px 86px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--purple-deep);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.65px;
+      text-transform: uppercase;
+    }
+
+    .eyebrow-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--purple);
+      box-shadow: 0 0 0 4px rgba(109, 99, 181, 0.14);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 660px;
+      margin: 23px 0 21px;
+      font-family: var(--display);
+      font-size: clamp(54px, 6.7vw, 86px);
+      font-weight: 650;
+      letter-spacing: -0.085em;
+      line-height: 0.99;
+    }
+
+    .hero-highlight {
+      position: relative;
+      z-index: 0;
+      white-space: nowrap;
+    }
+
+    .hero-highlight::after {
+      position: absolute;
+      z-index: -1;
+      right: -4px;
+      bottom: 5px;
+      left: -2px;
+      height: 18px;
+      background: var(--purple-light);
+      content: "";
+      transform: rotate(-1.5deg);
+    }
+
+    .hero-copy {
+      max-width: 480px;
+      margin-bottom: 28px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #49435e;
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .text-link span {
+      font-size: 17px;
+      transition: transform 180ms ease;
+    }
+
+    .text-link:hover span {
+      transform: translateX(4px);
+    }
+
+    .hero-visual {
+      position: relative;
+      display: grid;
+      min-height: 442px;
+      place-items: center;
+      overflow: hidden;
+      border: 1px solid #e9e6f0;
+      border-radius: 14px;
+      background:
+        radial-gradient(ellipse at 51% 43%, rgba(148, 137, 210, 0.2), transparent 38%),
+        linear-gradient(145deg, #f0eef7, #fdfcfe 55%, #efedf6);
+    }
+
+    .visual-grid {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(69, 59, 112, 0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(69, 59, 112, 0.045) 1px, transparent 1px);
+      background-size: 32px 32px;
+      mask-image: linear-gradient(to bottom, black, transparent 94%);
+    }
+
+    .orbit {
+      position: absolute;
+      width: 330px;
+      height: 330px;
+      border: 1px solid rgba(69, 59, 112, 0.2);
+      border-radius: 50%;
+    }
+
+    .orbit-two {
+      width: 255px;
+      height: 255px;
+      border-style: dashed;
+      border-color: rgba(69, 59, 112, 0.25);
+    }
+
+    .orbit-three {
+      width: 178px;
+      height: 178px;
+      border-color: rgba(69, 59, 112, 0.13);
+    }
+
+    .orbit-dot {
+      position: absolute;
+      top: 74px;
+      right: calc(50% - 162px);
+      width: 12px;
+      height: 12px;
+      border: 3px solid #f7f6fa;
+      border-radius: 50%;
+      background: var(--purple);
+      box-shadow: 0 0 0 1px rgba(69, 59, 112, 0.35);
+    }
+
+    .core-card {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      width: 108px;
+      height: 108px;
+      place-items: center;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 25px;
+      background: #fff;
+      box-shadow: 0 23px 55px rgba(69, 59, 112, 0.19), inset 0 1px rgba(255, 255, 255, 0.6);
+      transform: rotate(-8deg);
+    }
+
+    .core-logo {
+      display: block;
+      width: 100%;
+      height: 100%;
+      padding: 11px;
+      object-fit: contain;
+    }
+
+    .float-card {
+      position: absolute;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 14px;
+      border: 1px solid rgba(231, 228, 237, 0.9);
+      border-radius: 9px;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 12px 32px rgba(40, 35, 63, 0.09);
+      color: #39344a;
+      font-size: 11px;
+      font-weight: 650;
+    }
+
+    .float-card-one {
+      top: 22%;
+      left: 8%;
+    }
+
+    .float-card-two {
+      right: 7%;
+      bottom: 24%;
+    }
+
+    .float-icon {
+      display: grid;
+      width: 23px;
+      height: 23px;
+      place-items: center;
+      border-radius: 6px;
+      background: var(--purple-soft);
+      color: var(--purple-deep);
+      font-size: 12px;
+    }
+
+    .visual-caption {
+      position: absolute;
+      right: 22px;
+      bottom: 19px;
+      left: 22px;
+      display: flex;
+      justify-content: space-between;
+      color: #777283;
+      font-size: 10px;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+    }
+
+    .trust-row {
+      display: flex;
+      min-height: 96px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .trust-label {
+      max-width: 145px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .trust-items {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: flex-end;
+      gap: clamp(20px, 5vw, 70px);
+      color: #696578;
+      font-size: 13px;
+      font-weight: 650;
+      letter-spacing: -0.3px;
+    }
+
+    .trust-items span:nth-child(2) {
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .trust-items span:nth-child(3) {
+      font-family: Georgia, serif;
+      font-size: 15px;
+      font-style: italic;
+    }
+
+    .trust-items span:nth-child(4) {
+      font-size: 12px;
+      letter-spacing: 1.5px;
+    }
+
+    .section {
+      padding-block: 112px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 45px;
+    }
+
+    .section-heading h2,
+    .approach-copy h2,
+    .contact-content h2 {
+      max-width: 650px;
+      margin: 15px 0 0;
+      font-family: var(--display);
+      font-size: clamp(37px, 5vw, 57px);
+      font-weight: 620;
+      letter-spacing: -0.075em;
+      line-height: 1.05;
+    }
+
+    .section-intro {
+      max-width: 330px;
+      margin: 0 0 3px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .service-card {
+      min-height: 280px;
+      padding: 27px 26px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: rgba(255, 255, 255, 0.42);
+      transition: border-color 180ms ease, transform 180ms ease, background 180ms ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      border-color: #cec9df;
+      background: #fff;
+    }
+
+    .service-number {
+      color: #807b8d;
+      font-size: 11px;
+      font-weight: 650;
+      letter-spacing: 1px;
+    }
+
+    .service-icon {
+      display: grid;
+      width: 44px;
+      height: 44px;
+      margin-block: 35px 19px;
+      place-items: center;
+      border-radius: 11px;
+      background: var(--purple-soft);
+      color: var(--purple-deep);
+      font-size: 19px;
+    }
+
+    .service-card h3 {
+      margin-bottom: 10px;
+      font-size: 17px;
+      font-weight: 650;
+      letter-spacing: -0.55px;
+    }
+
+    .service-card p {
+      max-width: 300px;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .approach {
+      position: relative;
+      overflow: hidden;
+      background: #28233f;
+      color: #f7f6fb;
+    }
+
+    .approach::after {
+      position: absolute;
+      top: -270px;
+      right: -120px;
+      width: 680px;
+      height: 680px;
+      border: 1px solid rgba(173, 164, 223, 0.18);
+      border-radius: 50%;
+      box-shadow: 0 0 0 65px rgba(173, 164, 223, 0.035), 0 0 0 130px rgba(173, 164, 223, 0.025);
+      content: "";
+      pointer-events: none;
+    }
+
+    .approach-layout {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      align-items: start;
+      gap: 100px;
+    }
+
+    .approach .eyebrow {
+      color: #c5c0d5;
+    }
+
+    .approach-copy h2 {
+      margin-top: 18px;
+      font-size: clamp(40px, 5.2vw, 60px);
+    }
+
+    .approach-copy h2 span {
+      color: #bdb3f2;
+    }
+
+    .approach-copy p {
+      max-width: 370px;
+      margin: 23px 0 28px;
+      color: #bcb7c9;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .steps {
+      display: grid;
+      gap: 0;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 43px 1fr;
+      gap: 18px;
+      padding: 22px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+    }
+
+    .step:first-child {
+      padding-top: 0;
+    }
+
+    .step:last-child {
+      border-bottom: 0;
+    }
+
+    .step-number {
+      padding-top: 3px;
+      color: #bdb3f2;
+      font-size: 11px;
+      font-weight: 650;
+      letter-spacing: 1px;
+    }
+
+    .step h3 {
+      margin-bottom: 8px;
+      font-size: 16px;
+      font-weight: 630;
+      letter-spacing: -0.4px;
+    }
+
+    .step p {
+      max-width: 425px;
+      margin: 0;
+      color: #bcb7c9;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .contact-section {
+      padding-block: 108px;
+    }
+
+    .contact-card {
+      position: relative;
+      display: flex;
+      min-height: 320px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      overflow: hidden;
+      padding: 58px 65px;
+      border-radius: 12px;
+      background: var(--purple-light);
+      color: #27213f;
+    }
+
+    .contact-card::after {
+      position: absolute;
+      top: -150px;
+      right: 14%;
+      width: 410px;
+      height: 410px;
+      border: 1px solid rgba(69, 59, 112, 0.16);
+      border-radius: 50%;
+      box-shadow: 0 0 0 42px rgba(69, 59, 112, 0.045), 0 0 0 84px rgba(69, 59, 112, 0.035);
+      content: "";
+      pointer-events: none;
+    }
+
+    .contact-content,
+    .contact-actions {
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-content .eyebrow {
+      color: #4f4679;
+    }
+
+    .contact-content h2 {
+      max-width: 560px;
+      margin-top: 15px;
+      font-size: clamp(39px, 5vw, 57px);
+    }
+
+    .contact-content p {
+      margin: 17px 0 0;
+      color: #514a68;
+      font-size: 14px;
+    }
+
+    .contact-actions {
+      flex: 0 0 auto;
+    }
+
+    .contact-actions .button {
+      border-color: #30294a;
+      background: #30294a;
+    }
+
+    .contact-actions .button:hover {
+      border-color: #443a68;
+      background: #443a68;
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-main {
+      display: flex;
+      min-height: 105px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .footer-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 25px;
+      color: #625d70;
+      font-size: 11px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      min-height: 49px;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--line);
+      color: #858091;
+      font-size: 10px;
+    }
+
+    .footer-bottom p {
+      margin: 0;
+    }
+
+    @media (min-width: 1400px) {
+      .hero {
+        min-height: 720px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        min-height: 0;
+        grid-template-columns: 1fr 0.88fr;
+        gap: 25px;
+        padding-block: 75px;
+      }
+
+      h1 {
+        font-size: clamp(52px, 8vw, 72px);
+      }
+
+      .hero-visual {
+        min-height: 370px;
+      }
+
+      .orbit {
+        width: 270px;
+        height: 270px;
+      }
+
+      .orbit-two {
+        width: 210px;
+        height: 210px;
+      }
+
+      .orbit-three {
+        width: 150px;
+        height: 150px;
+      }
+
+      .core-card {
+        width: 94px;
+        height: 94px;
+      }
+
+      .float-card-one {
+        left: 4%;
+      }
+
+      .float-card-two {
+        right: 3%;
+      }
+
+      .section {
+        padding-block: 88px;
+      }
+
+      .approach-layout {
+        gap: 55px;
+      }
+
+      .contact-card {
+        padding-inline: 42px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .shell {
+        width: min(100% - 40px, var(--max-width));
+      }
+
+      .nav {
+        min-height: 70px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 69px;
+        right: 0;
+        left: 0;
+        display: none;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px 20px 18px;
+        border-bottom: 1px solid var(--line);
+        background: var(--paper);
+      }
+
+      .nav-links.is-open {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .nav-links > a:not(.nav-cta) {
+        padding: 14px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .nav-links .nav-cta {
+        margin-top: 14px;
+      }
+
+      .nav-links .language-toggle {
+        align-self: flex-start;
+        margin-top: 12px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 38px;
+        padding-block: 66px 55px;
+      }
+
+      h1 {
+        max-width: 540px;
+        margin-top: 20px;
+        font-size: clamp(54px, 12.3vw, 77px);
+      }
+
+      .hero-copy {
+        font-size: 15px;
+      }
+
+      .hero-visual {
+        min-height: 360px;
+      }
+
+      .trust-row {
+        min-height: 112px;
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        gap: 15px;
+        padding-block: 20px;
+      }
+
+      .trust-label {
+        max-width: none;
+      }
+
+      .trust-items {
+        width: 100%;
+        justify-content: space-between;
+        gap: 12px;
+        font-size: 11px;
+      }
+
+      .trust-items span:nth-child(4) {
+        font-size: 10px;
+      }
+
+      .section {
+        padding-block: 75px;
+      }
+
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 17px;
+        margin-bottom: 31px;
+      }
+
+      .section-intro {
+        max-width: 440px;
+      }
+
+      .service-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .service-card {
+        min-height: 0;
+        padding: 22px;
+      }
+
+      .service-icon {
+        margin-block: 24px 16px;
+      }
+
+      .approach-layout {
+        grid-template-columns: 1fr;
+        gap: 44px;
+      }
+
+      .approach-copy h2 {
+        max-width: 500px;
+      }
+
+      .contact-section {
+        padding-block: 75px;
+      }
+
+      .contact-card {
+        min-height: 0;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 30px;
+        padding: 37px 28px;
+      }
+
+      .contact-card::after {
+        top: -195px;
+        right: -220px;
+      }
+
+      .footer-main {
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        gap: 18px;
+        padding-block: 25px;
+      }
+
+      .footer-bottom {
+        gap: 14px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell nav">
+      <a class="brand" href="#" aria-label="Biciatech home" data-i18n-aria-label="brand.home">
+        <img class="brand-logo" src="assets/biciatech-logo.png" alt="Biciatech">
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-navigation">
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="nav-links" id="primary-navigation" aria-label="Primary navigation">
+        <a href="#services" data-i18n="nav.services">What we do</a>
+        <a href="#approach" data-i18n="nav.approach">How we work</a>
+        <a href="#contact" data-i18n="nav.about">About us</a>
+        <button class="language-toggle" type="button" aria-label="Switch language to Portuguese" data-i18n-aria-label="language.switchToPortuguese">PT</button>
+        <a class="nav-cta" href="#contact"><span data-i18n="nav.cta">Let’s talk</span> <span class="button-arrow" aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="shell hero" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <div class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> <span data-i18n="hero.eyebrow">Your technology partner</span></div>
+        <h1 id="hero-title"><span data-i18n="hero.titlePrefix">Software built for </span><span class="hero-highlight" data-i18n="hero.titleHighlight">what’s next.</span></h1>
+        <p class="hero-copy" data-i18n="hero.copy">We turn bold ideas into powerful software. From custom platforms to AI-powered products, we build the technology that moves your business forward.</p>
+        <div class="hero-actions">
+          <a class="button" href="#contact"><span data-i18n="hero.primaryCta">Tell us what you’re building</span> <span class="button-arrow" aria-hidden="true">↗</span></a>
+          <a class="text-link" href="#services"><span data-i18n="hero.secondaryCta">Explore our services</span> <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-label="Illustration of connected software and AI capabilities" data-i18n-aria-label="hero.visualLabel">
+        <div class="visual-grid" aria-hidden="true"></div>
+        <div class="orbit" aria-hidden="true"></div>
+        <div class="orbit orbit-two" aria-hidden="true"></div>
+        <div class="orbit orbit-three" aria-hidden="true"></div>
+        <div class="orbit-dot" aria-hidden="true"></div>
+        <div class="core-card"><img class="core-logo" src="assets/biciatech-mark.png" alt=""></div>
+        <div class="float-card float-card-one"><span class="float-icon" aria-hidden="true">✳</span> <span data-i18n="hero.visualAi">AI, thoughtfully applied</span></div>
+        <div class="float-card float-card-two"><span class="float-icon" aria-hidden="true">⌘</span> <span data-i18n="hero.visualCustom">Built around your needs</span></div>
+        <div class="visual-caption"><span data-i18n="hero.visualCaption">Ideas into impact</span><span>01 — ∞</span></div>
+      </div>
+    </section>
+
+    <div class="shell trust-row" aria-label="Technologies we work with" data-i18n-aria-label="trust.label">
+      <div class="trust-label"><span data-i18n="trust.lineOne">Modern tools.</span><br><span data-i18n="trust.lineTwo">Made for real-world impact.</span></div>
+      <div class="trust-items">
+        <span data-i18n="trust.ai">Artificial Intelligence</span>
+        <span data-i18n="trust.cloud">Cloud &amp; Data</span>
+        <span data-i18n="trust.product">Product Engineering</span>
+        <span data-i18n="trust.automation">Automation</span>
+      </div>
+    </div>
+
+    <section class="shell section" id="services" aria-labelledby="services-title">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> <span data-i18n="services.eyebrow">What we do</span></div>
+          <h2 id="services-title"><span data-i18n="services.titleLineOne">The right tech for</span><br><span data-i18n="services.titleLineTwo">your next big move.</span></h2>
+        </div>
+        <p class="section-intro" data-i18n="services.intro">Practical expertise, modern technology, and a team that cares about getting the details right.</p>
+      </div>
+      <div class="service-grid">
+        <article class="service-card">
+          <div class="service-number" data-i18n="services.buildNumber">01 / BUILD</div>
+          <div class="service-icon" aria-hidden="true">⌘</div>
+          <h3 data-i18n="services.buildTitle">Custom software</h3>
+          <p data-i18n="services.buildCopy">Purpose-built web apps, platforms, and internal tools designed around the way your business works.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-number" data-i18n="services.aiNumber">02 / INTELLIGENCE</div>
+          <div class="service-icon" aria-hidden="true">✳</div>
+          <h3 data-i18n="services.aiTitle">AI &amp; automation</h3>
+          <p data-i18n="services.aiCopy">Thoughtful AI integrations and smart workflows that reduce busywork and unlock new possibilities.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-number" data-i18n="services.productNumber">03 / EVOLVE</div>
+          <div class="service-icon" aria-hidden="true">↗</div>
+          <h3 data-i18n="services.productTitle">Product &amp; cloud</h3>
+          <p data-i18n="services.productCopy">From first prototype to scalable infrastructure, we help your product keep pace with your ambition.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="approach section" id="approach" aria-labelledby="approach-title">
+      <div class="shell approach-layout">
+        <div class="approach-copy">
+          <div class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> <span data-i18n="approach.eyebrow">A better way to build</span></div>
+          <h2 id="approach-title"><span data-i18n="approach.titleLineOne">Big-tech thinking.</span><br><span data-i18n="approach.titleHighlight">Real human</span> <span data-i18n="approach.titleSuffix">partnership.</span></h2>
+          <p data-i18n="approach.copy">Great software comes from listening first, moving with intention, and staying close from the first sketch to launch day and beyond.</p>
+          <a class="button button-light" href="#contact"><span data-i18n="approach.cta">Meet your technology partner</span> <span class="button-arrow" aria-hidden="true">↗</span></a>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <div class="step-number">01</div>
+            <div>
+              <h3 data-i18n="approach.stepOneTitle">Start with the why</h3>
+              <p data-i18n="approach.stepOneCopy">We learn about your goals, your people, and the real problem worth solving.</p>
+            </div>
+          </article>
+          <article class="step">
+            <div class="step-number">02</div>
+            <div>
+              <h3 data-i18n="approach.stepTwoTitle">Make a clear plan</h3>
+              <p data-i18n="approach.stepTwoCopy">Together, we shape a practical roadmap, the right team, and a path to measurable value.</p>
+            </div>
+          </article>
+          <article class="step">
+            <div class="step-number">03</div>
+            <div>
+              <h3 data-i18n="approach.stepThreeTitle">Build, learn, improve</h3>
+              <p data-i18n="approach.stepThreeCopy">We ship in focused steps, stay transparent, and keep refining around your feedback.</p>
+            </div>
+          </article>
+          <article class="step">
+            <div class="step-number">04</div>
+            <div>
+              <h3 data-i18n="approach.stepFourTitle">Grow with confidence</h3>
+              <p data-i18n="approach.stepFourCopy">Launch is a beginning. We help your software evolve as your business does.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="contact-card">
+        <div class="contact-content">
+          <div class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> <span data-i18n="contact.eyebrow">Your next chapter starts here</span></div>
+          <h2 id="contact-title" data-i18n="contact.title">Have a good problem?</h2>
+          <p data-i18n="contact.copy">Let’s talk about what we can build together.</p>
+        </div>
+        <div class="contact-actions">
+          <!-- Replace the placeholder with your preferred contact email. -->
+          <a class="button" href="mailto:leandro.biciato@biciatech.com.br"><span data-i18n="contact.cta">Start a conversation</span> <span class="button-arrow" aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-main">
+      <a class="brand" href="#" aria-label="Biciatech home" data-i18n-aria-label="brand.home">
+        <img class="brand-logo" src="assets/biciatech-logo.png" alt="Biciatech">
+      </a>
+      <p class="footer-note" data-i18n="footer.note">Software made for what comes next.</p>
+      <div class="footer-links">
+        <!-- Replace these placeholder links with your company profiles. -->
+        <a href="https://www.linkedin.com/company/102416339" data-i18n="footer.linkedin">LinkedIn</a>
+        <a href="https://github.com/biciatech" data-i18n="footer.github">GitHub</a>
+        <a href="mailto:leandro.biciato@biciatech.com.br" data-i18n="footer.email">Email</a>
+      </div>
+    </div>
+    <div class="shell footer-bottom">
+      <p>© <span id="current-year">2026</span> <span data-i18n="footer.rights">Biciatech. All rights reserved.</span></p>
+      <p data-i18n="footer.location">[Your location]</p>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navigation = document.querySelector("#primary-navigation");
+    const languageToggle = document.querySelector(".language-toggle");
+
+    const translations = {
+      en: {
+        "brand.home": "Biciatech home",
+        "language.switchToPortuguese": "Switch language to Portuguese",
+        "language.switchToEnglish": "Switch language to English",
+        "menu.open": "Open navigation",
+        "menu.close": "Close navigation",
+        "nav.label": "Primary navigation",
+        "nav.services": "What we do",
+        "nav.approach": "How we work",
+        "nav.about": "About us",
+        "nav.cta": "Let’s talk",
+        "hero.eyebrow": "Your technology partner",
+        "hero.titlePrefix": "Software built for ",
+        "hero.titleHighlight": "what’s next.",
+        "hero.copy": "We turn bold ideas into powerful software. From custom platforms to AI-powered products, we build the technology that moves your business forward.",
+        "hero.primaryCta": "Tell us what you’re building",
+        "hero.secondaryCta": "Explore our services",
+        "hero.visualLabel": "Illustration of connected software and AI capabilities",
+        "hero.visualAi": "AI, thoughtfully applied",
+        "hero.visualCustom": "Built around your needs",
+        "hero.visualCaption": "Ideas into impact",
+        "trust.label": "Technologies we work with",
+        "trust.lineOne": "Modern tools.",
+        "trust.lineTwo": "Made for real-world impact.",
+        "trust.ai": "Artificial Intelligence",
+        "trust.cloud": "Cloud & Data",
+        "trust.product": "Product Engineering",
+        "trust.automation": "Automation",
+        "services.eyebrow": "What we do",
+        "services.titleLineOne": "The right tech for",
+        "services.titleLineTwo": "your next big move.",
+        "services.intro": "Practical expertise, modern technology, and a team that cares about getting the details right.",
+        "services.buildNumber": "01 / BUILD",
+        "services.buildTitle": "Custom software",
+        "services.buildCopy": "Purpose-built web apps, platforms, and internal tools designed around the way your business works.",
+        "services.aiNumber": "02 / INTELLIGENCE",
+        "services.aiTitle": "AI & automation",
+        "services.aiCopy": "Thoughtful AI integrations and smart workflows that reduce busywork and unlock new possibilities.",
+        "services.productNumber": "03 / EVOLVE",
+        "services.productTitle": "Product & cloud",
+        "services.productCopy": "From first prototype to scalable infrastructure, we help your product keep pace with your ambition.",
+        "approach.eyebrow": "A better way to build",
+        "approach.titleLineOne": "Big-tech thinking.",
+        "approach.titleHighlight": "Real human",
+        "approach.titleSuffix": "partnership.",
+        "approach.copy": "Great software comes from listening first, moving with intention, and staying close from the first sketch to launch day and beyond.",
+        "approach.cta": "Meet your technology partner",
+        "approach.stepOneTitle": "Start with the why",
+        "approach.stepOneCopy": "We learn about your goals, your people, and the real problem worth solving.",
+        "approach.stepTwoTitle": "Make a clear plan",
+        "approach.stepTwoCopy": "Together, we shape a practical roadmap, the right team, and a path to measurable value.",
+        "approach.stepThreeTitle": "Build, learn, improve",
+        "approach.stepThreeCopy": "We ship in focused steps, stay transparent, and keep refining around your feedback.",
+        "approach.stepFourTitle": "Grow with confidence",
+        "approach.stepFourCopy": "Launch is a beginning. We help your software evolve as your business does.",
+        "contact.eyebrow": "Your next chapter starts here",
+        "contact.title": "Have a good problem?",
+        "contact.copy": "Let’s talk about what we can build together.",
+        "contact.cta": "Start a conversation",
+        "footer.note": "Software made for what comes next.",
+        "footer.linkedin": "LinkedIn",
+        "footer.github": "GitHub",
+        "footer.email": "Email",
+        "footer.rights": "Biciatech. All rights reserved.",
+        "footer.location": "[Your location]",
+        "meta.title": "Biciatech — Software built for what’s next",
+        "meta.description": "Biciatech builds custom software, AI-powered products, and digital experiences for ambitious teams."
+      },
+      pt: {
+        "brand.home": "Página inicial da Biciatech",
+        "language.switchToPortuguese": "Mudar idioma para português",
+        "language.switchToEnglish": "Mudar idioma para inglês",
+        "menu.open": "Abrir navegação",
+        "menu.close": "Fechar navegação",
+        "nav.label": "Navegação principal",
+        "nav.services": "O que fazemos",
+        "nav.approach": "Como trabalhamos",
+        "nav.about": "Sobre nós",
+        "nav.cta": "Vamos conversar",
+        "hero.eyebrow": "Sua parceira em tecnologia",
+        "hero.titlePrefix": "Software para ",
+        "hero.titleHighlight": "o que vem aí.",
+        "hero.copy": "Transformamos grandes ideias em software poderoso. De plataformas sob medida a produtos com inteligência artificial, criamos a tecnologia que impulsiona o seu negócio.",
+        "hero.primaryCta": "Conte o que você quer criar",
+        "hero.secondaryCta": "Conheça nossas soluções",
+        "hero.visualLabel": "Ilustração de soluções de software e inteligência artificial conectadas",
+        "hero.visualAi": "IA aplicada com propósito",
+        "hero.visualCustom": "Feito para as suas necessidades",
+        "hero.visualCaption": "Ideias que geram impacto",
+        "trust.label": "Tecnologias com que trabalhamos",
+        "trust.lineOne": "Tecnologia moderna.",
+        "trust.lineTwo": "Impacto no mundo real.",
+        "trust.ai": "Inteligência Artificial",
+        "trust.cloud": "Nuvem e Dados",
+        "trust.product": "Desenvolvimento de Produtos",
+        "trust.automation": "Automação",
+        "services.eyebrow": "O que fazemos",
+        "services.titleLineOne": "A tecnologia certa para",
+        "services.titleLineTwo": "o seu próximo passo.",
+        "services.intro": "Experiência prática, tecnologia moderna e uma equipe que cuida de cada detalhe.",
+        "services.buildNumber": "01 / CRIAR",
+        "services.buildTitle": "Software sob medida",
+        "services.buildCopy": "Aplicações web, plataformas e ferramentas internas feitas para o jeito que a sua empresa trabalha.",
+        "services.aiNumber": "02 / INTELIGÊNCIA",
+        "services.aiTitle": "IA e automação",
+        "services.aiCopy": "Integrações de IA e fluxos inteligentes que reduzem tarefas repetitivas e abrem novas possibilidades.",
+        "services.productNumber": "03 / EVOLUIR",
+        "services.productTitle": "Produtos e nuvem",
+        "services.productCopy": "Do primeiro protótipo a uma infraestrutura escalável, ajudamos seu produto a acompanhar suas ambições.",
+        "approach.eyebrow": "Um jeito melhor de criar",
+        "approach.titleLineOne": "Tecnologia de ponta.",
+        "approach.titleHighlight": "Parceria",
+        "approach.titleSuffix": "de verdade.",
+        "approach.copy": "Software de qualidade nasce da escuta, de decisões conscientes e de uma parceria próxima do primeiro esboço ao lançamento — e além.",
+        "approach.cta": "Conheça sua parceira em tecnologia",
+        "approach.stepOneTitle": "Começamos pelo propósito",
+        "approach.stepOneCopy": "Entendemos seus objetivos, sua equipe e o problema que realmente vale a pena resolver.",
+        "approach.stepTwoTitle": "Definimos um plano claro",
+        "approach.stepTwoCopy": "Criamos juntos um roteiro prático, montamos a equipe certa e buscamos resultados mensuráveis.",
+        "approach.stepThreeTitle": "Criamos, aprendemos, melhoramos",
+        "approach.stepThreeCopy": "Entregamos em etapas, trabalhamos com transparência e evoluímos com base no seu feedback.",
+        "approach.stepFourTitle": "Crescemos com confiança",
+        "approach.stepFourCopy": "O lançamento é só o começo. Ajudamos seu software a evoluir junto com a sua empresa.",
+        "contact.eyebrow": "O próximo capítulo começa aqui",
+        "contact.title": "Tem um desafio em mente?",
+        "contact.copy": "Vamos conversar sobre o que podemos criar juntos.",
+        "contact.cta": "Vamos conversar",
+        "footer.note": "Software feito para o que vem pela frente.",
+        "footer.linkedin": "LinkedIn",
+        "footer.github": "GitHub",
+        "footer.email": "E-mail",
+        "footer.rights": "Biciatech. Todos os direitos reservados.",
+        "footer.location": "[Sua localização]",
+        "meta.title": "Biciatech — Software para o que vem aí",
+        "meta.description": "A Biciatech cria software sob medida, produtos com inteligência artificial e experiências digitais para empresas ambiciosas."
+      }
+    };
+
+    function getInitialLanguage() {
+      const savedLanguage = localStorage.getItem("biciatech-language");
+      if (savedLanguage === "en" || savedLanguage === "pt") {
+        return savedLanguage;
+      }
+      return navigator.language.toLowerCase().startsWith("pt") ? "pt" : "en";
+    }
+
+    function setLanguage(language) {
+      const copy = translations[language];
+      document.documentElement.lang = language === "pt" ? "pt-BR" : "en";
+      document.title = copy["meta.title"];
+      document.querySelector('meta[name="description"]').content = copy["meta.description"];
+
+      document.querySelectorAll("[data-i18n]").forEach((element) => {
+        element.textContent = copy[element.dataset.i18n];
+      });
+
+      document.querySelectorAll("[data-i18n-aria-label]").forEach((element) => {
+        element.setAttribute("aria-label", copy[element.dataset.i18nAriaLabel]);
+      });
+
+      languageToggle.textContent = language === "pt" ? "EN" : "PT";
+      languageToggle.setAttribute(
+        "aria-label",
+        copy[language === "pt" ? "language.switchToEnglish" : "language.switchToPortuguese"]
+      );
+      menuToggle.setAttribute("aria-label", copy["menu.open"]);
+      navigation.setAttribute("aria-label", copy["nav.label"]);
+    }
+
+    let currentLanguage = getInitialLanguage();
+    setLanguage(currentLanguage);
+
+    languageToggle.addEventListener("click", () => {
+      currentLanguage = currentLanguage === "en" ? "pt" : "en";
+      localStorage.setItem("biciatech-language", currentLanguage);
+      setLanguage(currentLanguage);
+    });
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", String(!isOpen));
+      menuToggle.setAttribute("aria-label", translations[currentLanguage][isOpen ? "menu.open" : "menu.close"]);
+      navigation.classList.toggle("is-open", !isOpen);
+    });
+
+    navigation.addEventListener("click", (event) => {
+      if (event.target.closest("a")) {
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", translations[currentLanguage]["menu.open"]);
+        navigation.classList.remove("is-open");
+      }
+    });
+
+    document.querySelector("#current-year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
